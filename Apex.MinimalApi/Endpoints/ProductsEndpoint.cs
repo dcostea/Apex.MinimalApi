@@ -14,11 +14,12 @@ public class ProductsEndpoint : IEndpoint
         {
             var products = await productsRepository.GetProductsAsync();
             if (products == null) return Results.NotFound();
+
             return Results.Ok(products);
         }
         catch (Exception)
         {
-            return Results.BadRequest();
+            return Results.Problem();
         }
     }
 
@@ -28,11 +29,12 @@ public class ProductsEndpoint : IEndpoint
         {
             var product = await productsRepository.GetProductByIdAsync(id);
             if (product == null) return Results.NotFound();
+            
             return Results.Ok(product);
         }
         catch (Exception)
         {
-            return Results.BadRequest();
+            return Results.Problem();
         }
     }
 }

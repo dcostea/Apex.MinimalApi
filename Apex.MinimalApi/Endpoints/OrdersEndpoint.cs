@@ -14,11 +14,12 @@ public class OrdersEndpoint : IEndpoint
         {
             var order = await ordersRepository.GetOrderByIdAsync(id);
             if (order == null) return Results.NotFound();
+
             return Results.Ok(order);
         }
         catch (Exception)
         {
-            return Results.BadRequest();
+            return Results.Problem();
         }
     }
 
@@ -28,11 +29,12 @@ public class OrdersEndpoint : IEndpoint
         {
             var orders = await ordersRepository.GetOrdersAsync();
             if (orders == null) return Results.NotFound();
+            
             return Results.Ok(orders);
         }
         catch (Exception)
         {
-            return Results.BadRequest();
+            return Results.Problem();
         }
     }
 }
