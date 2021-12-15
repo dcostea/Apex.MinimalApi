@@ -1,23 +1,22 @@
-// configure services
+// add services configuration
 
-var builder = WebApplication.CreateBuilder();
+var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddCustomDependencies();
-builder.Services.ScanCustomEndpoints();
+builder.Services.ScanApexDependencies();
+builder.Services.ScanApexEndpoints();
 
 // add services
 
 var app = builder.Build();
 
-app.CustomMap();
+app.MapApexEndpoints();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
 app.MapControllers();
 
 app.Run();

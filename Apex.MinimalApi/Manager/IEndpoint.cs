@@ -1,4 +1,4 @@
-﻿namespace Apex.MinimalApi.Helpers;
+﻿namespace Apex.MinimalApi.Manager;
 
 public interface IEndpoint
 {
